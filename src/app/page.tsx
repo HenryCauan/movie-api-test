@@ -1,5 +1,6 @@
 'use client'
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
+import Image from "next/image";
 
 interface Movie {
   title: string;
@@ -13,17 +14,15 @@ const Home = () => {
   const [query, setQuery] = useState('batman coringa');
   const [inputValue, setInputValue] = useState('');
 
-  const fetchMovies = () => {
+  const fetchMovies = useCallback(() => {
     fetch(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${encodeURIComponent(query)}`)
       .then(response => response.json())
       .then(data => {
         console.log('Resultados encontrados:');
-        const content = document.getElementById('content');
-        data.results.forEach((movie: Movie) => {
-          const card = document.getElementById('card');
+        data.results.forEach((movie: Movie) => {1
           const name = document.getElementById('name');
           const pib = document.getElementById('pib');
-          const post = document.getElementById('post');
+          const post = document.getElementById('post') as HTMLImageElement;
           const sinopse = document.getElementById('sinopse');
 
           if (name) name.textContent = movie.title;
@@ -33,11 +32,11 @@ const Home = () => {
         });
       })
       .catch(error => console.error('Erro na requisição:', error));
-  };
+  }, [apiKey, query]);
 
   useEffect(() => {
     fetchMovies();
-  }, [query]);
+  }, [fetchMovies]);
 
   const handleSearch = () => {
     setQuery(inputValue);
@@ -65,7 +64,14 @@ const Home = () => {
           <div className="flex gap-12 mx-auto mt-2 flex-wrap items-start" id="content">
             <div className="w-[18rem] h-[40rem] mb-8" id="card">
               <h2 className="text-2xl" id="name"></h2> <p id="pib"></p>
-              <img src="" alt="post" className="w-full h-[400px]" id="post" />
+              <Image
+                src=""
+                alt="post"
+                className="w-full h-[400px]"
+                id="post"
+                width={500}
+                height={400}
+              />
               <p className="text-[1rem] w-full text-justify mt-2" id="sinopse"></p>
             </div>
           </div>
