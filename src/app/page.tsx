@@ -1,103 +1,78 @@
-import Image from "next/image";
+'use client'
+import { useEffect, useState } from "react";
 
-export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+interface Movie {
+  title: string;
+  overview: string;
+  vote_average: number;
+  poster_path: string;
 }
+
+const Home = () => {
+  const apiKey = 'a86f52caaf8faecdb26d7f437edd4301';
+  const [query, setQuery] = useState('batman coringa');
+  const [inputValue, setInputValue] = useState('');
+
+  const fetchMovies = () => {
+    fetch(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${encodeURIComponent(query)}`)
+      .then(response => response.json())
+      .then(data => {
+        console.log('Resultados encontrados:');
+        const content = document.getElementById('content');
+        data.results.forEach((movie: Movie) => {
+          const card = document.getElementById('card');
+          const name = document.getElementById('name');
+          const pib = document.getElementById('pib');
+          const post = document.getElementById('post');
+          const sinopse = document.getElementById('sinopse');
+
+          if (name) name.textContent = movie.title;
+          if (pib) pib.textContent = String(movie.vote_average);
+          if (post) post.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+          if (sinopse) sinopse.textContent = movie.overview;
+        });
+      })
+      .catch(error => console.error('Erro na requisição:', error));
+  };
+
+  useEffect(() => {
+    fetchMovies();
+  }, [query]);
+
+  const handleSearch = () => {
+    setQuery(inputValue);
+  };
+
+  return (
+    <>
+      <div className="flex flex-col w-screen min-h-screen bg-gray-500">
+        <header className="w-full items-center flex flex-col mt-12 gap-12">
+          <h1 className="text-5xl font-bold">Encontre seu Filme</h1>
+          <div className="flex gap-2">
+            <input
+              className="w-[30rem] h-[2.5rem] bg-white text-black placeholder:pl-4"
+              type="text"
+              placeholder="Escolha seu Filme"
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
+            />
+            <button className="bg-white text-black px-8" onClick={handleSearch}>
+              Send
+            </button>
+          </div>
+        </header>
+        <main className="w-full items-start flex flex-col mt-8 p-12">
+          <div className="flex gap-12 mx-auto mt-2 flex-wrap items-start" id="content">
+            <div className="w-[18rem] h-[40rem] mb-8" id="card">
+              <h2 className="text-2xl" id="name"></h2> <p id="pib"></p>
+              <img src="" alt="post" className="w-full h-[400px]" id="post" />
+              <p className="text-[1rem] w-full text-justify mt-2" id="sinopse"></p>
+            </div>
+          </div>
+        </main>
+      </div>
+    </>
+  );
+};
+
+export default Home;
