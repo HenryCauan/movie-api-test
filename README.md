@@ -4,7 +4,7 @@ Perfeito! Aqui está um modelo de **README.md** para o seu repositório:
 
 Este projeto é um app simples para buscar informações de filmes usando a [TMDb API](https://developers.themoviedb.org/3) — desenvolvido como desafio de aprendizado.
 
-![Banner](https://www.themoviedb.org/assets/2/v4/logos/293x302-powered-by-square-green-e0dbffa8b5ef76e76510df10628c732ba07bf6576682189e50e54f9b15c9f71c.png)
+![Image](https://github.com/user-attachments/assets/944a1641-a59d-437f-a9a6-5a04d313556f)
 
 ## 🚀 Tecnologias utilizadas
 
