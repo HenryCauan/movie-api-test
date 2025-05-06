@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Perfeito! Aqui está um modelo de **README.md** para o seu repositório:
 
-## Getting Started
+# 🎬 Movie API Test
 
-First, run the development server:
+Este projeto é um app simples para buscar informações de filmes usando a [TMDb API](https://developers.themoviedb.org/3) — desenvolvido como desafio de aprendizado.
+
+![Image](https://github.com/user-attachments/assets/944a1641-a59d-437f-a9a6-5a04d313556f)
+
+## 🚀 Tecnologias utilizadas
+
+- [Next.js](https://nextjs.org/)  
+- [TypeScript](https://www.typescriptlang.org/)  
+- [JavaScript (fetch API)](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)  
+- [Tailwind CSS](https://tailwindcss.com/)  
+- [TMDb API](https://developers.themoviedb.org/3)
+
+---
+
+## 📦 Funcionalidades
+
+✅ Buscar filmes pelo nome  
+✅ Exibir resultados com título, sinopse, nota média e poster  
+✅ Design simples e responsivo usando Tailwind  
+✅ Integração com a API TMDb usando chave pessoal  
+
+---
+
+## 🔧 Como rodar o projeto
+
+1️⃣ Clone o repositório:
+```bash
+git clone https://github.com/HenryCauan/movie-api-test.git
+````
+
+2️⃣ Instale as dependências:
+
+```bash
+npm install
+```
+
+3️⃣ Configure a variável de ambiente:
+Crie um arquivo `.env.local` na raiz do projeto com:
+
+```
+NEXT_PUBLIC_TMDB_API_KEY=your_tmdb_api_key_here
+```
+
+4️⃣ Rode o projeto:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Acesse no navegador: [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🛡 Aviso
 
-## Learn More
+🔑 **Não exponha sua chave da API TMDb em repositórios públicos!**
+Use variáveis de ambiente para proteger suas credenciais.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## ✨ Melhorias futuras
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+* Filtro por gênero
+* Paginação de resultados
+* Página de detalhes de cada filme
+* Melhor UX/UI com animações
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📄 Licença
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Este projeto está sob licença MIT.
