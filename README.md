@@ -74,18 +74,3 @@ Use variáveis de ambiente para proteger suas credenciais.
 ## 📄 Licença
 
 Este projeto está sob licença MIT.
-
----
-
-### 💬 Contato
-
-Feito por Henry Cauan.
-\[Seu LinkedIn ou outro link de contato aqui, se quiser adicionar]
-
-```
-
----
-
-Se quiser, posso gerar também o arquivo direto ou personalizar ainda mais (com emojis, badges, links, etc). Quer?
-```
-  
