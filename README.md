@@ -1,8 +1,5 @@
 Perfeito! Aqui está um modelo de **README.md** para o seu repositório:
 
----
-
-````markdown
 # 🎬 Movie API Test
 
 Este projeto é um app simples para buscar informações de filmes usando a [TMDb API](https://developers.themoviedb.org/3) — desenvolvido como desafio de aprendizado.
