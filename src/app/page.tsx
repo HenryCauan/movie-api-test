@@ -10,7 +10,7 @@ interface Movie {
 }
 
 const Home = () => {
-  const apiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY;
+  const apiKey = "a86f52caaf8faecdb26d7f437edd4301";
   const [query, setQuery] = useState('batman coringa');
   const [inputValue, setInputValue] = useState('');
 
