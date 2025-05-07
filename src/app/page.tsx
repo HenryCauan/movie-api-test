@@ -18,8 +18,9 @@ const Home = () => {
     fetch(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${encodeURIComponent(query)}`)
       .then(response => response.json())
       .then(data => {
+        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         console.log('Resultados encontrados:');
-        data.results.forEach((movie: Movie) => {1
+        data.results.forEach((movie: Movie) => {
           const name = document.getElementById('name');
           const pib = document.getElementById('pib');
           const post = document.getElementById('post') as HTMLImageElement;
