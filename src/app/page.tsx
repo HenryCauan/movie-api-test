@@ -36,6 +36,7 @@ const Home = () => {
   }, [apiKey, query]);
 
   useEffect(() => {
+    console.log("API Key:", process.env.NEXT_PUBLIC_TMDB_API_KEY); // Remova depois de testar
     fetchMovies();
   }, [fetchMovies]);
 
