@@ -68,7 +68,7 @@ const Home = () => {
               <h2 className="text-2xl" id="name"></h2> <p id="pib"></p>
               <Image
                 src=""
-                alt="post"
+                alt="postImage"
                 className="w-full h-[400px]"
                 id="post"
                 width={500}
