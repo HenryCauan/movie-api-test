@@ -1,4 +1,4 @@
-# 🎬 Movie API Test
+# 🎬 Movie API Test Filmes
 
 Este projeto é um app simples para buscar informações de filmes usando a [TMDb API](https://developers.themoviedb.org/3) — desenvolvido como desafio de aprendizado.
 
