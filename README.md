@@ -67,7 +67,6 @@ Use variáveis de ambiente para proteger suas credenciais.
 * Página de detalhes de cada filme
 * Melhor UX/UI com animações
 
----
 
 ## 📄 Licença
 
